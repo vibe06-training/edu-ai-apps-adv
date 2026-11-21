@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>퀴즈 생성기 | 수업 준비 도구</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="js/form-check.js" defer></script>
+  <script src="js/mock-preview.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body class="layout">
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <aside class="sidebar">
+    <a class="brand" href="index.html">수업 준비 도구</a>
+    <nav aria-label="수업 준비 기능">
+      <a href="quiz.html" aria-current="page">퀴즈 생성기</a>
+      <a href="activity.html">학습활동 추천</a>
+    </nav>
+  </aside>
+  <main id="main" tabindex="-1">
+    <header>
+      <p class="eyebrow">AI융합교육 교사연수 - 심화 5</p>
+      <h1>퀴즈 생성기</h1>
+      <p>이 화면은 AI를 호출하지 않습니다. 샘플 문항을 보려면 문항 수를 5개, 문항 유형을 선택형으로 설정한 뒤 제출하세요.</p>
+    </header>
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">퀴즈 입력</h2>
+      <form id="preview-form" novalidate>
+        <div class="field">
+          <label for="subject" data-label="과목">과목 (필수)</label>
+          <input id="subject" name="subject" maxlength="30" required placeholder="예: 수학">
+        </div>
+        <div class="field">
+          <label for="grade" data-label="학년 또는 학습자 수준">학년 또는 학습자 수준 (필수)</label>
+          <select id="grade" name="grade" required>
+            <option value="">학년을 선택하세요</option>
+            <optgroup label="초등학교"><option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option></optgroup>
+            <optgroup label="중학교"><option>중1</option><option>중2</option><option>중3</option></optgroup>
+            <optgroup label="고등학교"><option>고1</option><option>고2</option><option>고3</option></optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label for="topic" data-label="단원 또는 주제">단원 또는 주제 (필수)</label>
+          <input id="topic" name="topic" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label for="goal" data-label="학습 목표">학습 목표 (선택)</label>
+          <textarea id="goal" name="goal" rows="2" maxlength="300"></textarea>
+        </div>
+        <div class="field">
+          <label for="reference" data-label="참고 자료">참고 자료 (선택)</label>
+          <textarea id="reference" name="reference" rows="3" maxlength="2000"></textarea>
+        </div>
+        <div class="field">
+          <label for="count" data-label="문항 수">문항 수 (필수, 1~20)</label>
+          <input id="count" name="count" type="number" min="1" max="20" step="1" value="5" required>
+        </div>
+        <div class="field">
+          <label for="type" data-label="문항 유형">문항 유형 (필수)</label>
+          <select id="type" name="type" required>
+            <option value="">유형을 선택하세요</option>
+            <option value="선택형">선택형 (보기 4개)</option><option>OX</option><option>단답형</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="difficulty" data-label="난이도">난이도 (필수)</label>
+          <select id="difficulty" name="difficulty" required>
+            <option>쉬움</option><option selected>보통</option><option>어려움</option>
+          </select>
+        </div>
+        <button type="submit">입력값 확인</button>
+      </form>
+    </section>
+    <section class="card" aria-labelledby="result-title">
+      <h2 id="result-title">결과 미리보기</h2>
+      <p id="result-status" role="status">아직 표시할 결과가 없습니다. 입력을 채운 뒤 ‘입력값 확인’을 눌러 주세요.</p>
+      <dl id="result-values" hidden></dl>
+    </section>
+    <section class="sample-section" aria-labelledby="samples-title">
+      <h2 id="samples-title">샘플 문항</h2>
+      <p id="sample-status" role="status">제출하면 샘플 문항을 검증합니다.</p>
+      <div id="sample-cards" data-preview="quiz"></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "preview:mock": "node scripts/build-mock-preview.js"
+  },
+  "dependencies": {
+    "openai": "^7.62.0"
+  }
+}
